@@ -12,6 +12,5 @@ const reportData = [
     other: '',
     medication: '',
     effective: ''
-
   }
 ]
