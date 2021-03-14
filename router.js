@@ -2,7 +2,7 @@ const express = require('express')
 //express router to be used
 const router = express.Router()
 const Reports = require('./models/report')
-const controller = require('./controllers/controller')
+const controller = require('./controllers/reports')
 
 //routes:
 

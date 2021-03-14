@@ -29,15 +29,15 @@ function singleReport(req, res) {
 
 function removeReport(req, res) {
   const date = req.params.date
-  const reportIndex = Report.findIndex(report => {
-    reportIndex.date === date
-    Report.splice(reportIndex, 1)
-    res.status(204).send()
-  })
+  const reportIndex = Report.findIndex(report => report.date === date)
+  Report.splice(reportIndex, 1)
+  res.status(204).send()
 }
+
 
 module.exports = {
   getReports,
   addReport,
-  singleReport
+  singleReport,
+  removeReport
 }
