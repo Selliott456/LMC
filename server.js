@@ -1,8 +1,20 @@
 //import is still fairly new for node. Require is fully stable
 const express = require('express')
 const Router = require('./router')
-
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
+mongoose.connect(
+  'mongodb://localhost/lmc',
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  (err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('Mongoose connected successfully')
+    }
+  }
+)
 
 //express is a function that helps you create a webserver
 const expressServer = express()
