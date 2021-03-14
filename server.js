@@ -2,6 +2,7 @@
 const express = require('express')
 const Router = require('./router')
 
+const bodyParser = require('body-parser')
 
 //express is a function that helps you create a webserver
 const expressServer = express()
@@ -14,6 +15,7 @@ expressServer.use((req, res, next)=> {
 
 // prefixing all your routes. all requests for data will start with
 // '/api'
+expressServer.use(bodyParser.json())
 expressServer.use(('/api', Router))
 
 //port assigned for express to listen to
