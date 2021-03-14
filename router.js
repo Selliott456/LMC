@@ -9,5 +9,5 @@ router.route('/data')
     res.send(Reports)
   })
 
-
+router.route('/data')
 module.exports = router
