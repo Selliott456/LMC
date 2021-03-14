@@ -1,20 +1,39 @@
 const Report = require('../models/report')
 
 function getReports(req, res) {
-  res.send(Report)
+  Report
+    .find()
+    .then(reportList => {
+      res.send(reportList)
+    })
 }
 
+
 function addReport(req, res) {
-  Report.push(req.body)
-  res.send(req.body)
+  const report = req.body
+  Report
+    .create(report)
+    .then(report => {
+      res.send(report)
+    })
+    .catch(error => res.send(error))
 }
 
 function singleReport(req, res) {
   const date = req.params.date
   const report = Report.filter(report => {
-    return report.date == date
+    return report.date === date
   })
   res.send(report[0])
+}
+
+function removeReport(req, res) {
+  const date = req.params.date
+  const reportIndex = Report.findIndex(report => {
+    reportIndex.date === date
+    Report.splice(reportIndex, 1)
+    res.status(204).send()
+  })
 }
 
 module.exports = {
