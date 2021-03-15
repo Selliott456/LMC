@@ -1,5 +1,7 @@
 const User = require('../models/user')
 const router = require('../router')
+const jwt = require('jsonwebtoken')
+const secret = require('../config/environment')
 
 function createUser(req, res) {
   const body = req.body
@@ -18,6 +20,11 @@ function loginUser(req, res) {
       if (!user.validatePassword(req.body.password)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
+      const token = jwt.sign(
+        { sub: user._id },
+        secret,
+        { expiresIn: '6h' }
+      )
       res.status(202).send({ message: 'Login successful!' })
     })
 }
