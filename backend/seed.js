@@ -4,7 +4,7 @@ const User = require('./models/user')
 
 
 mongoose.connect(
-  'mongodb://localhost/lmc'
+  'mongodb://localhost/lmc',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)
@@ -21,7 +21,7 @@ mongoose.connect(
           {
             username: 'lauren',
             email: 'lauren@email.com',
-            password: password
+            password: 'password'
           }
         ])
       })
@@ -29,8 +29,8 @@ mongoose.connect(
         console.log(`${users.length} users have been created`)
         return users
       })
-      .then((users) => {
-        Report.create([
+      .then( (users) => {
+        return Report.create([
           {
             date: 'the date',
             painType: 'pain',

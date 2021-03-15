@@ -1,12 +1,11 @@
 const express = require('express')
 //express router to be used
 const router = express.Router()
-const Reports = require('./models/report')
 const reportController = require('./controllers/reports')
 const userController = require('./controllers/users')
-const secureRoute = require('./middleware/secrueRoute')
-//routes:
+const secureRoute = require('./middleware/secureRoute')
 
+//routes:
 router.route('/data')
   .get(reportController.getReports)
   .post(secureRoute, reportController.addReport)
