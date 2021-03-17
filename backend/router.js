@@ -6,18 +6,10 @@ const userController = require('./controllers/users')
 const secureRoute = require('./middleware/secureRoute')
 
 //routes:
-router.route('/data')
-  .get(reportController.getReports)
+router.route('/reports')
+  .get(reportController.getUserReports)
   .post(secureRoute, reportController.addReport)
   
-
-router.route('/userdata')
-  .get(secureRoute, reportController.getUserReports)
-
-router.route('/data/:date')
-  .get(reportController.singleReport)
-
-
 router.route('/signup')
   .post(userController.createUser)
 
