@@ -1,6 +1,18 @@
 const Report = require('../models/report')
 
+function getUserReports(req, res) {
+  Report
+    .find()
+    .then(reportList => {
+      res.send(reportList)
+    })
+    .catch(error => res.send(error))
+}
+
 function getReports(req, res) {
+  if (!req.currentUser.isAdmin) {
+    return res.status(401).send({ message: 'Unauthorized' })
+  }
   Report
     .find()
     .then(reportList => {
@@ -9,10 +21,11 @@ function getReports(req, res) {
 }
 
 
+
 function addReport(req, res) {
-  const report = req.body
+  req.body.user = req.currentUser
   Report
-    .create(report)
+    .create(req.body)
     .then(report => {
       res.send(report)
     })
@@ -35,9 +48,11 @@ function removeReport(req, res) {
 }
 
 
+
 module.exports = {
   getReports,
   addReport,
   singleReport,
-  removeReport
+  removeReport,
+  getUserReports
 }

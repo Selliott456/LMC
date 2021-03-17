@@ -6,6 +6,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
     "mongoose-hidden": "^1.9.1",
+    "mongoose-unique-validator": "^2.0.3",
     "parser": "^0.1.4"
   }
 }

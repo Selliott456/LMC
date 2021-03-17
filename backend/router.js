@@ -9,6 +9,10 @@ const secureRoute = require('./middleware/secureRoute')
 router.route('/data')
   .get(reportController.getReports)
   .post(secureRoute, reportController.addReport)
+  
+
+router.route('/userdata')
+  .get(secureRoute, reportController.getUserReports)
 
 router.route('/data/:date')
   .get(reportController.singleReport)

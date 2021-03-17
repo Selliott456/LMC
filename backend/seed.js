@@ -22,6 +22,12 @@ mongoose.connect(
             username: 'lauren',
             email: 'lauren@email.com',
             password: 'password'
+          },
+          {
+            username: 'Admin',
+            email: 'admin@admin.com',
+            password: 'admin',
+            isAdmin: true
           }
         ])
       })
@@ -32,7 +38,7 @@ mongoose.connect(
       .then( (users) => {
         return Report.create([
           {
-            date: 'the date',
+            date: 'the date from allen',
             painType: 'pain',
             aura: '',
             intensity: 'severe',
@@ -43,10 +49,11 @@ mongoose.connect(
             mood: '3',
             other: 'no',
             medication: 'ibuprofen',
-            effective: 'yes'
+            effective: 'yes',
+            user: users[0]
           },
           {
-            date: 'the date',
+            date: 'the date from Lauren',
             painType: 'pain',
             aura: '',
             intensity: 'severe',
@@ -57,7 +64,9 @@ mongoose.connect(
             mood: '3',
             other: 'no',
             medication: 'ibuprofen',
-            effective: 'yes'
+            effective: 'yes',
+            user: users[1]
+
           } 
         ])
       })

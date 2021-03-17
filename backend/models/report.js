@@ -14,8 +14,11 @@ const reportSchema = new mongoose.Schema({
   mood: { type: Number, required: false },
   other: { type: String, required: false },
   medication: { type: String, required: false },
-  effective: { type: String, required: false }
+  effective: { type: String, required: false },
+  //ref relationship links report to user that creates it
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
+
 
 // register schema as a model (loose example of instance of the class/Schema)
 //first arg is singular of what your model is building
