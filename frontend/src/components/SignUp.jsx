@@ -67,6 +67,7 @@ return <div className="signUp" role="main">
       value={formData.password}
       name="password"
     />
+    <button>Submit</button>
   </form>
 </div>
 }
