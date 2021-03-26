@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './App.css'
 import axios from 'axios'
 
-function App(props) {
+function SignUp(props) {
   const [formData, updateFormData] = useState({
     username: "",
 	  email: "",
@@ -43,6 +42,33 @@ function handleSubmit(event) {
       }
     })
 }
+
+return <div className="signUp" role="main">
+  <h1>Sign Up</h1>
+  <form onSubmit={handleSubmit}>
+    <label>Username</label>
+    <input 
+    type="text"
+    onChange={handleChange}
+    value={formData.username}
+    name="username"
+    />
+    <label>email</label>
+    <input 
+      type="text"
+      onChange={handleChange}
+      value={formData.email}
+      name="email"
+    />
+    <label>Password</label>
+    <input
+      type="password"
+      onChange={handleChange}
+      value={formData.password}
+      name="password"
+    />
+  </form>
+</div>
 }
 
-export default App
+export default SignUp
